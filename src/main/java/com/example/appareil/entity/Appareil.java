@@ -19,6 +19,9 @@ public class Appareil {
     private String label;
     private String description;
     private boolean state;
+    @Lob
+    @Column(columnDefinition = "LONGTEXT")
+    private String photo;
 
     @ManyToOne
     private Categorie categorie;

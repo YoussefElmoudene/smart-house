@@ -3,6 +3,7 @@ package com.example.appareil.service;
 import com.example.appareil.entity.Appareil;
 import com.example.appareil.repository.AppareilRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,5 +32,12 @@ public class AppareilService {
     public List<Appareil> findAll() {
         return appareilRepository.findAll();
     }
+
+    public void update(Long id,Appareil appInfo) {
+        Appareil appareil=appareilRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("app not found with id " + id));
+        appareil.setState(appInfo.isState());
+        appareilRepository.save(appareil);
+    }
+
 
 }

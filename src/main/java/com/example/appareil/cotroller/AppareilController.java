@@ -15,6 +15,7 @@ import java.util.Optional;
 @CrossOrigin
 public class AppareilController {
 
+
     @Autowired
     private AppareilService appareilService;
 
@@ -29,8 +30,8 @@ public class AppareilController {
     }
 
     @DeleteMapping("/id/{id}")
-    public void deleteById(Long id) {
-        appareilService.deleteById(id);
+    public void deleteById(@PathVariable Long id) {
+         appareilService.deleteById(id);
     }
 
     @GetMapping("/")
@@ -38,5 +39,10 @@ public class AppareilController {
         return appareilService.findAll();
     }
 
+
+    @PutMapping("/id/{id}")
+    public void update(@PathVariable Long id,@RequestBody Appareil appInfo) {
+        appareilService.update(id, appInfo);
+    }
 
 }
