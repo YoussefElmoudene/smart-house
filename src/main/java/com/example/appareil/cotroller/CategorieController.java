@@ -13,6 +13,7 @@ import java.util.Optional;
 @CrossOrigin
 public class CategorieController {
 
+
     @Autowired
     private CategorieService categorieService;
 
@@ -37,6 +38,11 @@ public class CategorieController {
         categorieService.deleteById(id);
     }
 
+
+    @PutMapping("/id/{id}")
+    public void update(@PathVariable Long id,@RequestBody Categorie catInfo) {
+        categorieService.update(id, catInfo);
+    }
 
 
 }
