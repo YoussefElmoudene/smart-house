@@ -39,5 +39,13 @@ public class AppareilService {
         appareilRepository.save(appareil);
     }
 
+    public void updateAll( Appareil appInfo){
+        List<Appareil> appareilList =appareilRepository.findAll();
+        for (Appareil appareil:appareilList) {
+            appareil.setState(appInfo.isState());
+            appareilRepository.save(appareil);
+        }
+
+    }
 
 }

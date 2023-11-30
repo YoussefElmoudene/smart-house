@@ -16,6 +16,8 @@ import java.util.Optional;
 public class AppareilController {
 
 
+
+
     @Autowired
     private AppareilService appareilService;
 
@@ -43,6 +45,11 @@ public class AppareilController {
     @PutMapping("/id/{id}")
     public void update(@PathVariable Long id,@RequestBody Appareil appInfo) {
         appareilService.update(id, appInfo);
+    }
+
+    @PutMapping("/update/updateall")
+    public void updateAll(@RequestBody Appareil appInfo) {
+        appareilService.updateAll(appInfo);
     }
 
 }
