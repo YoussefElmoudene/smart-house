@@ -3,7 +3,6 @@ package com.example.appareil.cotroller;
 import com.example.appareil.entity.Appareil;
 import com.example.appareil.service.AppareilService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,8 +13,6 @@ import java.util.Optional;
 @RequestMapping("/api/controller/appareil")
 @CrossOrigin
 public class AppareilController {
-
-
 
 
     @Autowired
@@ -33,7 +30,7 @@ public class AppareilController {
 
     @DeleteMapping("/id/{id}")
     public void deleteById(@PathVariable Long id) {
-         appareilService.deleteById(id);
+        appareilService.deleteById(id);
     }
 
     @GetMapping("/")
@@ -43,13 +40,14 @@ public class AppareilController {
 
 
     @PutMapping("/id/{id}")
-    public void update(@PathVariable Long id,@RequestBody Appareil appInfo) {
+    public void update(@PathVariable Long id, @RequestBody Appareil appInfo) {
         appareilService.update(id, appInfo);
     }
 
-    @PutMapping("/update/updateall")
-    public void updateAll(@RequestBody Appareil appInfo) {
-        appareilService.updateAll(appInfo);
+
+    @GetMapping("/update/state/{state}")
+    public void updateAll(@PathVariable boolean state) {
+        appareilService.updateAll(state);
     }
 
 }
